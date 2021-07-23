@@ -101,3 +101,37 @@ fun eval (Const i)     = i
 eval(Add((Mul((Const 3),(Const 4))),(Const 2)));
 
 
+(* Taking function as arg *)
+
+fun repeat (f,n,x) =
+    if n=0
+    then x
+    else f (repeat (f,n-1,x));
+
+fun triple x = 3*x;
+
+repeat(triple,4,2);
+(* 2*3*3*3*3=162 *)
+
+(* Anonymous functions *)
+
+repeat((fn x => x*x),3,2);
+(* ((2*2)*(2*2))*((2*2)*(2*2)) => 256*)
+
+(* Higher order functions *)
+
+map (fn x => x+1) [1,2,3];
+
+(* returning functions *)
+
+fun double_or_triple f =
+    if f 9
+    then fn x => 2*x
+    else fn x => 3*x;
+(* fn : (int -> bool) -> int -> int *)
+(* Take a function that map an int to bool, 
+then it will return a function that double_or_triple a number *)
+
+double_or_triple (fn x => if x>5 then true else false) 3;
+(* => 6, as 9 < 5, it wil be doubled *
+
