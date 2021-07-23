@@ -8,9 +8,12 @@ To read two books ->
 # Tooling
 
 * Main -> Standard ML of New Jersey
-* Secondary -> Poly/ML
+* Secondary -> MLton
+* Auxiliary -> Poly/ML
 
-`sudo ln -s /usr/bin/smlnj /usr/bin/sml`
+`sudo pacman -S smlnj mlton polyml`
+
+`alias sml="rlwrap smlnj"`
 
 Emacs:
 
